@@ -1,0 +1,38 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+public class LoginPage {
+
+    WebDriver driver;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    By username = By.id("login_field");
+    By password = By.id("password");
+    By signInBtn = By.name("commit");
+    By errorMsg = By.id("js-flash-container");
+    By profileIcon =
+            By.cssSelector("[data-testid='github-avatar']");
+
+    public void login(String user, String pass) {
+        driver.findElement(username).sendKeys(user);
+        driver.findElement(password).sendKeys(pass);
+        driver.findElement(signInBtn).click();
+    }
+
+    public String getErrorMessage() {
+        return driver.findElement(errorMsg).getText();
+    }
+
+    // Login success validation method
+    public boolean isLoginSuccessful() {
+        return !driver.findElements(profileIcon).isEmpty();
+
+    }
+
+}
