@@ -31,13 +31,15 @@ public class CreateRepository {
     }
 
     public void createPublicRepo(String name, boolean includeReadMe) {
-        driver.findElement(repoName).sendKeys(name);
-        driver.findElement(visibility).click();
-        driver.findElement(publicRepo).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(repoName)).sendKeys(name);
+
+        wait.until(ExpectedConditions.elementToBeClickable(visibility)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(publicRepo)).click();
 
         if (includeReadMe) {
-            driver.findElement(readMeCheckbox).click();
+            wait.until(ExpectedConditions.elementToBeClickable(readMeCheckbox)).click();
         }
+        wait.until(ExpectedConditions.elementToBeClickable(createRepoBtn));
 
         driver.findElement(createRepoBtn).click();
     }
