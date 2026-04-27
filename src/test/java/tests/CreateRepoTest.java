@@ -49,13 +49,14 @@ public class CreateRepoTest extends BaseTest {
         String repoName = "Selenium_Automation_" + System.currentTimeMillis();
         String repoRename = "demo-repo-" + UUID.randomUUID().toString().substring(0, 6);
         CreateRepo.createPublicRepo(repoName, false);
+        System.out.println("Current URL after click: " + driver.getCurrentUrl());
 //        newRepoPage.submit_details();
         Assert.assertTrue(
                 CreateRepo.isRepoCreated(repoName),
-                "Public repository with README enabled was not created"
+                "Public repository was not created"
         );
 
-        CreateRepo.renameRepositoryfillDetails(repoRename);
+        CreateRepo.renameRepositoryDetails(repoRename);
         CreateRepo.renameRepo();
 
         Assert.assertTrue(
@@ -69,8 +70,8 @@ public class CreateRepoTest extends BaseTest {
         HomePage home = new HomePage(driver);
 
         // Read credentials from environment variables
-        String username = ConfigReader.getProperty("github.username");
-        String password = ConfigReader.getProperty("github.password");
+        String username = System.getenv("GITHUB_USERNAME");
+        String password = System.getenv("GITHUB_PASSWORD");
 
 
         if (username == null || password == null) {

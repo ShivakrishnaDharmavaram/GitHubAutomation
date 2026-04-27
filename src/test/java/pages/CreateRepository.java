@@ -59,7 +59,7 @@ public class CreateRepository {
 
     }
 
-    public void renameRepositoryfillDetails(String name) throws InterruptedException {
+    public void renameRepositoryDetails(String name) throws InterruptedException {
         driver.findElement(repoSettings).click();
         driver.findElement(repoRename).clear();
         driver.findElement(repoRename).sendKeys(name);
@@ -71,7 +71,6 @@ public class CreateRepository {
         driver.findElement(repoRenameButton).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
-
     public boolean isRepoRenamed(String expectedRepoName) {
         try {
             String actualRepoName =
