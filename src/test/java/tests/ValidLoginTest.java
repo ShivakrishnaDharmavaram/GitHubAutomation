@@ -15,7 +15,7 @@ public class ValidLoginTest extends BaseTest {
      * NOTE:
      * - Disabled by default due to CAPTCHA / 2FA on GitHub
      */
-    @Test//(enabled = false)
+    @Test(enabled = true)
     public void validLoginTest() {
 
         // Read credentials from environment variables

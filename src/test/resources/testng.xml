@@ -2,10 +2,7 @@
 <suite name="GitHub Automation Suite">
     <test name="GitHub UI Tests">
         <classes>
-            <class name="tests.HomePageTest"/>
-            <class name="tests.InvalidLoginTest"/>
-            <class name="tests.SearchTest"/>
-            <class name="tests.FooterLinksTest"/>
+            <class name="tests.RepoTest"/>
         </classes>
     </test>
 </suite>
