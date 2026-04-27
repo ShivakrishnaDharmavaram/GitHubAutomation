@@ -2,7 +2,7 @@
 <suite name="GitHub Automation Suite">
     <test name="GitHub UI Tests">
         <classes>
-            <class name="tests.RepoTest"/>
+            <class name="tests.CreateRepoTest"/>
         </classes>
     </test>
 </suite>

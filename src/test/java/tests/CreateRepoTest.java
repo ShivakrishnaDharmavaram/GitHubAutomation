@@ -15,8 +15,11 @@ public class CreateRepoTest extends BaseTest {
         HomePage home = new HomePage(driver);
 
         // Read credentials from environment variables
-        String username = ConfigReader.getProperty("github.username");
-        String password = ConfigReader.getProperty("github.password");
+        String username = System.getenv("GITHUB_USERNAME");
+        String password = System.getenv("GITHUB_PASSWORD");
+
+//        System.out.println("Username: " + username);
+//        System.out.println("Password: " + password);
 
 
         if (username == null || password == null) {
@@ -95,7 +98,6 @@ public class CreateRepoTest extends BaseTest {
         repo.clickNewRepoButton();
         CreateRepository CreateRepo = new CreateRepository(driver);
         String repoName = "Selenium_Automation_" + System.currentTimeMillis();
-        String repoRename = "demo-repo-" + UUID.randomUUID().toString().substring(0, 6);
         CreateRepo.createPublicRepo(repoName, true);
 //        newRepoPage.submit_details();
         Assert.assertTrue(
