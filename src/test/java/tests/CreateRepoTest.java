@@ -48,7 +48,7 @@ public class CreateRepoTest extends BaseTest {
         CreateRepository CreateRepo = new CreateRepository(driver);
         String repoName = "Selenium_Automation_" + System.currentTimeMillis();
         String repoRename = "demo-repo-" + UUID.randomUUID().toString().substring(0, 6);
-        CreateRepo.createPublicRepo(repoName, false);
+        CreateRepo.createPublicRepo(repoName, true);
         System.out.println("Current URL after click: " + driver.getCurrentUrl());
 //        newRepoPage.submit_details();
         Assert.assertTrue(
