@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ValidLoginTest extends BaseTest {
-
     /**
      * NOTE:
      * - Disabled by default due to CAPTCHA / 2FA on GitHub
@@ -34,15 +33,10 @@ public class ValidLoginTest extends BaseTest {
         login.login(username, password);
 
         // Validation: Profile avatar or dashboard element
-
-
         Assert.assertTrue(
                 login.isLoginSuccessful(),
                 "Valid login failed – profile icon not visible"
         );
-
-//        Assert.assertTrue(loginPage.isLoginSuccessful(), "Valid login failed – profile icon not visible");
-
     }
 }
  

@@ -18,7 +18,6 @@ public class RepoTest extends BaseTest {
         String username = System.getenv("GITHUB_USERNAME");
         String password = System.getenv("GITHUB_PASSWORD");
 
-
         if (username == null || password == null) {
             Assert.fail("GitHub credentials are not set in environment variables");
         }
@@ -31,8 +30,6 @@ public class RepoTest extends BaseTest {
         login.login(username, password);
 
         // Validation: Profile avatar or dashboard element
-
-
         Assert.assertTrue(
                 login.isLoginSuccessful(),
                 "Valid login failed – profile icon not visible"
@@ -44,11 +41,10 @@ public class RepoTest extends BaseTest {
         NewRepoPage newRepo = new NewRepoPage(driver);
         String repoName = "Selenium_Auto_" + System.currentTimeMillis();
         newRepo.createPrivateRepo(repoName, true);
-//        newRepoPage.submit_details();
+//      newRepoPage.submit_details();
         Assert.assertTrue(
                 newRepo.isRepoCreated(repoName),
                 "Private repository with README enabled was not created"
         );
-
     }
 }

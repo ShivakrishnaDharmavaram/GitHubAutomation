@@ -11,6 +11,5 @@ public class HomePageTest extends BaseTest {
     public void verifyHomePageTitle() {
         HomePage home = new HomePage(driver);
         Assert.assertTrue(home.getTitle().contains("GitHub"));
-
     }
 }
