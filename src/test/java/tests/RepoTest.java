@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.NewRepoPage;
 import pages.RepoPage;
-import utils.ConfigReader;
 
 public class RepoTest extends BaseTest {
 
@@ -16,8 +15,8 @@ public class RepoTest extends BaseTest {
         HomePage home = new HomePage(driver);
 
         // Read credentials from environment variables
-        String username = ConfigReader.getProperty("github.username");
-        String password = ConfigReader.getProperty("github.password");
+        String username = System.getenv("GITHUB_USERNAME");
+        String password = System.getenv("GITHUB_PASSWORD");
 
 
         if (username == null || password == null) {
@@ -25,30 +24,29 @@ public class RepoTest extends BaseTest {
         }
 
         // Navigate to Login page
-        HomePage homePage = new HomePage(driver);
-        homePage.clickSignIn();
+        home.clickSignIn();
 
         // Perform Login
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(username, password);
+        LoginPage login = new LoginPage(driver);
+        login.login(username, password);
 
         // Validation: Profile avatar or dashboard element
 
 
         Assert.assertTrue(
-                loginPage.isLoginSuccessful(),
+                login.isLoginSuccessful(),
                 "Valid login failed – profile icon not visible"
         );
 
         RepoPage repo = new RepoPage(driver);
         repo.clickRepositoriesButton();
         repo.clickNewRepoButton();
-        NewRepoPage newRepoPage = new NewRepoPage(driver);
+        NewRepoPage newRepo = new NewRepoPage(driver);
         String repoName = "Selenium_Auto_" + System.currentTimeMillis();
-        newRepoPage.createPrivateRepo(repoName, true);
+        newRepo.createPrivateRepo(repoName, true);
 //        newRepoPage.submit_details();
         Assert.assertTrue(
-                newRepoPage.isRepoCreated(repoName),
+                newRepo.isRepoCreated(repoName),
                 "Private repository with README enabled was not created"
         );
 

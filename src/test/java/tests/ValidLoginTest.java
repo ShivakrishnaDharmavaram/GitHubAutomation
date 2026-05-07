@@ -4,10 +4,8 @@ package tests;
 import base.BaseTest;
 import pages.HomePage;
 import pages.LoginPage;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.ConfigReader;
 
 public class ValidLoginTest extends BaseTest {
 
@@ -19,8 +17,8 @@ public class ValidLoginTest extends BaseTest {
     public void validLoginTest() {
 
         // Read credentials from environment variables
-        String username = ConfigReader.getProperty("github.username");
-        String password = ConfigReader.getProperty("github.password");
+        String username = System.getenv("GITHUB_USERNAME");
+        String password = System.getenv("GITHUB_PASSWORD");
 
 
         if (username == null || password == null) {
@@ -28,18 +26,18 @@ public class ValidLoginTest extends BaseTest {
         }
 
         // Navigate to Login page
-        HomePage homePage = new HomePage(driver);
-        homePage.clickSignIn();
+        HomePage home = new HomePage(driver);
+        home.clickSignIn();
 
         // Perform Login
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(username, password);
+        LoginPage login = new LoginPage(driver);
+        login.login(username, password);
 
         // Validation: Profile avatar or dashboard element
 
 
         Assert.assertTrue(
-                loginPage.isLoginSuccessful(),
+                login.isLoginSuccessful(),
                 "Valid login failed – profile icon not visible"
         );
 
