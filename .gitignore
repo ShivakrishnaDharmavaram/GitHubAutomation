@@ -4,7 +4,7 @@ target/
 !**/src/test/**/target/
 .kotlin
 # Ignore sensitive config
-config.properties
+D:\New folder\GrowAI_Practice\GitHubAutomation\src\test\resources\config.properties
 
 # Optional: explicit path (extra safety)
 /src/test/resources/config.properties

@@ -25,6 +25,7 @@ public class CreateRepository {
     private By repoRename = By.xpath("//input[@id='rename-field']");
 
     private By repoRenameButton = By.xpath("//button[normalize-space()='Rename']");
+
     public CreateRepository(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
